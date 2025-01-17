@@ -1,0 +1,14 @@
+<main class="todo-container">
+    <mat-form-field>
+        <mat-label>New task</mat-label>
+        <input matInput type="text" [(ngModel)]="newTask" placeholder="Write new task">
+    </mat-form-field>
+    
+    <button mat-flat-button (click)="addTask()">Add Task</button>
+
+    <mat-list>
+        @for (todoItem of todoList; track $index) {
+            <mat-list-item>{{ todoItem.task }}</mat-list-item>
+        }
+</mat-list>
+</main>
