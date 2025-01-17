@@ -3,10 +3,19 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
+
+export interface TodoItem{
+  id:number;
+  task:string;
+  completed:boolean;
+}
+
 export class AppComponent {
-  title = 'todo-app-angular';
+  todoList : TodoItem [] = [];
+
+  newTask:string = ''
 }
