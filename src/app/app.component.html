@@ -1,17 +1,18 @@
 <main class="todo-container">
-    <mat-form-field>
-        <mat-label>New task</mat-label>
-        <input matInput type="text" [(ngModel)]="newTask" placeholder="Write new task">
-    </mat-form-field>
-    
-    <button mat-flat-button (click)="addTask()">Add Task</button>
-
+    <div class="todo">
+        <mat-form-field>
+            <mat-label>New task</mat-label>
+            <input matInput type="text" [(ngModel)]="newTask" placeholder="Write new task">
+        </mat-form-field>
+        
+        <button mat-flat-button (click)="addTask()">Add Task</button>
+    </div>
     <mat-list>
         @for (todoItem of todoList; track $index; let i = $index) {
             <mat-list-item>
                 {{ todoItem.task }}
                 <mat-checkbox (change)="completTask(i)"></mat-checkbox>
-                <button mat-flat-button (click)="deleteTask()">Delete</button>
+                <button mat-flat-button (click)="deleteTask(todoItem.id)">Delete</button>
             </mat-list-item>
         }
     </mat-list>

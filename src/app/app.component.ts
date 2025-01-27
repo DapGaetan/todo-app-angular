@@ -21,11 +21,7 @@ export interface TodoItem{
 })
 
 export class AppComponent {
-  deleteTask() {
-  throw new Error('Method not implemented.');
-  }
   todoList : TodoItem [] = [];
-
   newTask:string = ''
 
 
@@ -44,5 +40,10 @@ export class AppComponent {
   completTask(index : number):void {
     this.todoList[index].completed = !this.todoList[index].completed
     console.log(index)
+  }
+
+  deleteTask(id:number):void {
+    this.todoList = this.todoList.filter(item => item.id !== id)
+    console.log(this.todoList)
   }
 }
