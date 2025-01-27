@@ -7,8 +7,12 @@
     <button mat-flat-button (click)="addTask()">Add Task</button>
 
     <mat-list>
-        @for (todoItem of todoList; track $index) {
-            <mat-list-item>{{ todoItem.task }}</mat-list-item>
+        @for (todoItem of todoList; track $index; let i = $index) {
+            <mat-list-item>
+                {{ todoItem.task }}
+                <mat-checkbox (change)="completTask(i)"></mat-checkbox>
+                <button mat-flat-button (click)="deleteTask()">Delete</button>
+            </mat-list-item>
         }
-</mat-list>
+    </mat-list>
 </main>

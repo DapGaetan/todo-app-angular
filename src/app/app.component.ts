@@ -5,6 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 export interface TodoItem{
   id:number;
@@ -14,12 +15,15 @@ export interface TodoItem{
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatButtonModule, MatListModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatButtonModule, MatListModule, MatCheckboxModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 
 export class AppComponent {
+  deleteTask() {
+  throw new Error('Method not implemented.');
+  }
   todoList : TodoItem [] = [];
 
   newTask:string = ''
@@ -33,9 +37,12 @@ export class AppComponent {
         completed : false
       }
       this.todoList.push(newTodoItem)
-      console.log(this.todoList)
-
       this.newTask = ''
     }
+  }
+
+  completTask(index : number):void {
+    this.todoList[index].completed = !this.todoList[index].completed
+    console.log(index)
   }
 }
